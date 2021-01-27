@@ -13,6 +13,9 @@ TagManager:
   - Ball
   - NoAddGround
   - NoAddDisappear
+  - JumpGround
+  - DieGround
+  - nodieground
   layers:
   - Default
   - TransparentFX
