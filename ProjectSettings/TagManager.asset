@@ -16,6 +16,8 @@ TagManager:
   - JumpGround
   - DieGround
   - nodieground
+  - dashR
+  - dashL
   layers:
   - Default
   - TransparentFX

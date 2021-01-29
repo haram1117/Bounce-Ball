@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class BallBounce : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float dashSpeed;
+    public float dashSpeed = 10f;
     private int nowStage;
-    private bool isDash = false;
+    private bool isDashR = false;
+    private bool isDashL = false;
     private float hori;
     public int star;
     bool nextLevel = false;
@@ -16,6 +17,8 @@ public class BallBounce : MonoBehaviour
     Rigidbody2D rigid_s;
     Rigidbody2D rigid_b;
     bool isAlive;
+    float ball_loc_y;
+    private float gravity;
 
     private AudioSource die_audio;
     public AudioClip die_AC;
@@ -28,6 +31,7 @@ public class BallBounce : MonoBehaviour
         rigid_b = GameObject.Find("Ball").GetComponent<Rigidbody2D>();
         nowStage = SceneManager.GetActiveScene().buildIndex;
         die_audio = GameObject.Find("Ball").GetComponent<AudioSource>();
+        gravity = rigid_b.gravityScale;
         
     }
     float bounce = 30f;
@@ -40,8 +44,6 @@ public class BallBounce : MonoBehaviour
             Vector2 JumpVelocity = new Vector2(0, bounce);
             if (collision.gameObject.tag == "Ground") //일반 땅 (그냥 계속 바운스)
             {
-                Debug.Log("1");
-                Debug.Log(ball.transform.position.y - collision.transform.position.y);
                 rigid_b.AddForce(JumpVelocity, ForceMode2D.Impulse);
             }
             else if (collision.gameObject.tag == "DisappearGround" && ball.transform.position.y >= collision.transform.position.y)
@@ -68,22 +70,75 @@ public class BallBounce : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Star")
+        if (isAlive)
         {
-            GameObject.Destroy(collision.gameObject);
-            star--;
-            if (star == 0)
+            if (collision.gameObject.tag == "Star")
             {
-                nextLevel = true;
-                Invoke("NextLevel", 1);
-              
+                GameObject.Destroy(collision.gameObject);
+                star--;
+                if (star == 0)
+                {
+                    nextLevel = true;
+                    Invoke("NextLevel", 1);
+
+                }
             }
+            if (collision.gameObject.tag == "dashR" && ball.transform.position.y >= collision.transform.position.y)
+            {//오른쪽 Dash
+                ball_loc_y = collision.transform.position.y; // 공위치 가운데로 보내기
+                isDashR = true;
+            }
+            if (collision.gameObject.tag == "dashL" && ball.transform.position.y >= collision.transform.position.y)
+            {//왼쪽 dash
+                ball_loc_y = collision.transform.position.y;
+                isDashL = true;
+            }
+
         }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isAlive)
+        {
+            if (isDashR)//
+            {
+                rigid_b.gravityScale = 0;
+                ball.transform.position = new Vector2(ball.transform.localPosition.x, ball_loc_y); // 공위치 가운데로 보내기
+                rigid_b.velocity = new Vector2(10f, 0); // 공에 x축으로 +10만큼 속도주기
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    rigid_b.gravityScale = gravity;
+                    isDashR = false;
+                }
+            }
+            else if (isDashL)
+            {
+                rigid_b.gravityScale = 0;
+                ball.transform.position = new Vector2(ball.transform.localPosition.x, ball_loc_y); // 공위치 가운데로 보내기
+                rigid_b.velocity = new Vector2(-10f, 0); // 공에 x축으로 -10만큼 속도주기
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    rigid_b.gravityScale = gravity;
+                    isDashL = false;
+                }
+            }
+            else
+            {//horizontal 키 입력에 따라 공의 방향 바뀜
+                hori = Input.GetAxis("Horizontal");
+                rigid_b.velocity = new Vector2(hori * moveSpeed, rigid_b.velocity.y);
+            }
+            if (gameObject.transform.position.y < -8.84 && gameObject.transform.position.y > -9.5)
+            {//맵 밑으로 떨어졌을 때
+                isAlive = false;
+                die_audio.clip = die_AC;
+                die_audio.loop = false;
+                die_audio.PlayOneShot(die_AC);
+                Invoke("Respawn", 1f);
+            }
+        }
     }
 
     void NextLevel()
@@ -94,29 +149,8 @@ public class BallBounce : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDash)//
-        {
-            rigid_b.velocity = Vector2.right * dashSpeed;
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                rigid_b.gravityScale = 2;
-                isDash = false;
-            }
-
-        }
-        else
-        {//horizontal 키 입력에 따라 공의 방향 바뀜
-            hori = Input.GetAxis("Horizontal");
-            rigid_b.velocity = new Vector2(hori * moveSpeed, rigid_b.velocity.y);
-        }
-        if(gameObject.transform.position.y < -8.84 && gameObject.transform.position.y > -9.5)
-        {//맵 밑으로 떨어졌을 때
-            isAlive = false;
-            die_audio.clip = die_AC;
-            die_audio.loop = false;
-            die_audio.PlayOneShot(die_AC);
-            Invoke("Respawn", 1f);
-        }
+        
+        
     }
     void Respawn()
     {   
