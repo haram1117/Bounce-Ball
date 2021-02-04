@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class info : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class info : MonoBehaviour
     {
         infos.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/02-01");
     }
-
+    private void OnMouseDown()
+    {
+        SceneManager.LoadScene("InfoScene");
+    }
 }
 
