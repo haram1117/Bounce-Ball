@@ -1,0 +1,51 @@
+
+Assets/Resources/Audio/ballbounce.mp3
+Assets/Resources/Audio/die_ball.mp3
+Assets/Resources/Audio/staraudio.mp3
+Assets/Resources/Sprites/01 공.png
+Assets/Resources/Sprites/01 땅.png
+Assets/Resources/Sprites/01 땅2.png
+Assets/Resources/Sprites/01-01.png
+Assets/Resources/Sprites/01-02.png
+Assets/Resources/Sprites/02 없어지는 땅.png
+Assets/Resources/Sprites/02-01.png
+Assets/Resources/Sprites/02-02.png
+Assets/Resources/Sprites/03 나가기.png
+Assets/Resources/Sprites/03 땅.png
+Assets/Resources/Sprites/03 점프땅.png
+Assets/Resources/Sprites/04 가시땅-01.png
+Assets/Resources/Sprites/04 설정.png
+Assets/Resources/Sprites/05 뒤로가기.png
+Assets/Resources/Sprites/05 화살표1.png
+Assets/Resources/Sprites/05 화살표2.png
+Assets/Resources/Sprites/06-01.png
+Assets/Resources/Sprites/06-02.png
+Assets/Resources/Sprites/07 별(수정).png
+Assets/Resources/Sprites/07-01.png
+Assets/Resources/Sprites/07-02.png
+Assets/Resources/Sprites/08 바탕화면-17.png
+Assets/Resources/Sprites/210119 메인화면-01.png
+Assets/Resources/Sprites/210119 메인화면-02.png
+Assets/Resources/Sprites/210119 메인화면-03.png
+Assets/Resources/Sprites/210119 메인화면-04.png
+Assets/Resources/Sprites/210119 메인화면-05.png
+Assets/Resources/Sprites/210202 INFO 버튼 (-437.373, -248.345).png
+Assets/Resources/Sprites/210202 INFO 최종-08.png
+Assets/Resources/Sprites/effect01.png
+Assets/Resources/Sprites/effect02.png
+Assets/Resources/Sprites/sound01.png
+Assets/Resources/Sprites/sound02.png
+Assets/Resources/Sprites/배경-05.png
+Assets/Firebase/Editor/Firebase.Editor.dll
+Assets/Firebase/Plugins/Firebase.App.dll
+Assets/Firebase/Plugins/Firebase.Auth.dll
+Assets/Firebase/Plugins/Firebase.Database.dll
+Assets/Firebase/Plugins/Firebase.Platform.dll
+Assets/Firebase/Plugins/Firebase.TaskExtension.dll
+Assets/Firebase/Plugins/Google.MiniJson.dll
+Assets/Firebase/Plugins/iOS/Firebase.App.dll
+Assets/Firebase/Plugins/iOS/Firebase.Auth.dll
+Assets/Firebase/Plugins/iOS/Firebase.Database.dll
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-7_0_2.dll
+Assets/Firebase/Plugins/x86_64/FirebaseCppAuth.dll
+Assets/Firebase/Plugins/x86_64/FirebaseCppDatabase.dll
