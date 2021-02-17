@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "113228174987",
+    "project_id": "bounceball-7d260",
+    "storage_bucket": "bounceball-7d260.appspot.com",
+    "firebase_url": "https://bounceball-7d260-default-rtdb.firebaseio.com/"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113228174987:android:98c74231817fdfde06a68e",
+        "android_client_info": {
+          "package_name": "com.Company.BounceBall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113228174987-advat4rq62pnhb15sdcgr75meboasj75.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzh9XVvL2S2TrZdPbovy9gzRAsBw9rEIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113228174987-advat4rq62pnhb15sdcgr75meboasj75.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

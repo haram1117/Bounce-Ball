@@ -65,4 +65,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InfoScene.unity
     guid: 10403af6b35599b4f9af611b3f272d03
+  - enabled: 1
+    path: Assets/Scenes/LoginRegister.unity
+    guid: daa85bd8e0e8c724d8122f72725d7930
+  - enabled: 1
+    path: Assets/Scenes/Ranking.unity
+    guid: fc1587570c6cad640a6de63974ea79e4
   m_configObjects: {}
